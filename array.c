@@ -1,22 +1,25 @@
 #include<stdio.h>
 
 int main()
+
 {
-    int ror[20],i;
+    int avg,sum=0;
+    int i;
 
-    printf("Input 20 numbers:- \n");
-    for ( i = 0; i < 20; i++)
+    int marks[30];
+
+    for(i=0;i<=29;i++)
     {
-        printf("Enter %d number: ",i);
-        scanf("%d",&ror[i]);
-    }
-     printf("Numbers are:");
-    for ( i = 0; i < 20; i++)
-    {
-        printf(" %d",ror[i]);
+
+
+    printf("\nEnter marks: ");
+    scanf("%d",&marks[i]);
     }
 
-    
-    
-    
+    for(i=0;i<=29;i++)
+
+        sum=sum+marks[i];
+    avg=sum/30;
+
+    printf("\nAverage: %d",avg);
 }
