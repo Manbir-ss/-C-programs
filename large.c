@@ -1,7 +1,5 @@
 #include<stdio.h>
-
 int main()
-
 {
     int a,b,c;
 
@@ -14,7 +12,7 @@ int main()
     else if((b>a) && (b>c)){
         printf("%d is Larger",b);
     }
-    else{
+    else
         printf("%d is Larger",c);
-    }
+
 }
