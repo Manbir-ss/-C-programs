@@ -1,3 +1,3 @@
-# -C-programs
-practice programs 
-If any program is not working please messege me
+ C-programs
+Practice programs for begenners 
+
