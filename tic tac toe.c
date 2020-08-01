@@ -1,143 +1,109 @@
 #include<stdio.h>
 #include<conio.h>
-
-char square[10]={'0','1','2','3','4','5','6','7','8','9'};
-
-int checkwin();
-void board();
-
 int main()
-{
-    int player=1,choice,i;
 
-    char mark;
-    do
+{
+    int winner=0,count=0;
+    int data[9],index,flag,sign,player,i,j,k;
+    for(i=0;i<9;i++)
+
+
+
+    while(count<9)
     {
-        board();
-        player=(player%2)?1:2;
-        printf("Enter the number player %d: ",player);
-        scanf("%d",&choice);
-        mark=(player==1)?'X':'O';
+        flag=0;
+        system("cls");
+         printf("/n\n");
 
-        if(choice==1 && square[1]=='1'){
-            square[1]=mark;
-        }
-        else if(choice==2 && square[2]=='2'){
-            square[2]=mark;
-        }
-        else if(choice==3 && square[3]=='3'){
-            square[3]=mark;
-        }
-        else if(choice==4 && square[4]=='4'){
-        square[4]=mark;
-        }
-        else if(choice==5 && square[5]=='5'){
-        square[5]=mark;
-        }
-        else if(choice==6 && square[6]=='6'){
-        square[6]=mark;
-        }
-        else if(choice==7 && square[7]=='7'){
-        square[7]=mark;
-        }
-        else if(choice==8 && square[8]=='8'){
-        square[8]=mark;
-        }
-        else if(choice==9 && square[9]=='9'){
-        square[9]=mark;
-        }
-        else
-        {
-            printf("Wrong input");
+         printf("\t\t\t | %c | %c | %c  \n",data[0],data[1],data[2]);
+         printf("\t\t\t-|----|----|-----\n");
+         printf("\t\t\t | %c | %c | %c \n",data[3],data[4],data[5]);
+         printf("\t\t\t-|----|----|-----\n");
+         printf("\t\t\t | %c | %c | %c  \n",data[6],data[7],data[8]);
 
-            player--;
-            getch();
-        }
-        i=checkwin();
-        player++;
-    }while(i==-1);
+         if(count%2==0)
+         {
+             sign=='X';
+             player=1;
 
-    board();
+         }
+         else
+         {
+             sign=='Y';
+             player=2;
+         }
+         printf("move for player %d:",player);
+         scanf("%d",&index);
+         if(index < 1 || index >9 )
+            {
+            printf("Allowed index 1 to 9");
+            continue;
+            }
+            if(data[index-1]=='X' || data[index-1=='Y'])
+            {
+               printf("position already occupied");
+             continue;
+             }
+              data[index-1]==sign;
+              count++;
 
-    if(i==1)
-    printf("Player %d wins",--player);
+              for(i=0;i<=3;i++)
+              {
+                 if(i%3==0)
+                    flag=0;
 
-    else
-        printf("Draw");
+                  if(data[i]==sign)
+                  flag++;
 
-    getch();
+                 if(flag==3)
+                 {
+                     winner=1;
+                     goto win;
+                 }
+              }
+               flag=0;
+               for(i=0;i<=0;i++)
+               {
+                   for(k=i;k<=i+6;k=k+3)
+                   {
+                       if(data[k]==sign)
+                        flag++;
+                   }
+                   if(flag==3)
+                   {
+                       winner=1;
+                       goto win;
+                   }
+                   flag=0;
+               }
+               if((data[0] && data[4] && data[8]) || (data[2] && data[4] && data[6]))
+               {
+                winner=1;
+                goto win;
+                }
 
-    return 0;
 
+       }
+       win:
+           system("cls");
+
+         printf("\n");
+         printf("\t\t\t | %c | %c | %c  \n",data[0],data[1],data[2]);
+         printf("\t\t---|----|----|-----\n");
+         printf("\t\t\t | %c | %c |  %c \n",data[3],data[4],data[5]);
+         printf("\t\t---|----|----|-----\n");
+         printf("\t\t\t | %c | %c | %c  \n",data[6],data[7],data[8]);
+
+         if(winner)
+
+         {
+             printf("player %d is winner\n",player);
+
+         }
+         else
+         {
+             printf("Match draw");
+
+         }
+         return 0;
 }
-int checkwin()
-{
-    if(square[1] == square[2] && square[2]==square[3])
-    return 1;
-
-    else if(square[1] == square[4] && square[4]==square[7])
-    return 1;
-
-    else if(square[1] == square[5] && square[5]==square[9])
-    return 1;
-
-    else if(square[2] == square[5] && square[5]==square[8])
-    return 1;
-
-    else if(square[3] == square[6] && square[6]==square[9])
-    return 1;
-
-    else if(square[3] == square[5] && square[5]==square[7])
-    return 1;
-
-    else if(square[4] == square[5] && square[5]==square[6])
-    return 1;
-
-    else if(square[7] == square[8] && square[8]==square[9])
-    return 1;
-
-    else if(square[1] != '1' && square[2] != '2' && square[3] != '3' &&
-        square[4] != '4' && square[5] != '5' && square[6] != '6' && square[7]
-        != '7' && square[8] != '8' && square[9] != '9')
-    return 0;
-
-    else
-        return -1;
-
-}
-void board()
-{
-
-    system("cls");
-    printf("\n\n\tTic Tac Toe\n\n");
-
-    printf("Player 1 (X)  -  Player 2 (O)\n\n\n");
-
-
-    printf("     |     |     \n");
-    printf("  %c  |  %c  |  %c \n", square[1], square[2], square[3]);
-
-    printf("_____|_____|_____\n");
-    printf("     |     |     \n");
-
-    printf("  %c  |  %c  |  %c \n", square[4], square[5], square[6]);
-
-    printf("_____|_____|_____\n");
-    printf("     |     |     \n");
-
-    printf("  %c  |  %c  |  %c \n", square[7], square[8], square[9]);
-
-    printf("     |     |     \n\n");
-}
-
-
-
-
-
-
-
-
-
-
-
-
